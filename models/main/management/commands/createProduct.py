@@ -19,6 +19,6 @@ class Command(BaseCommand):
             'quantity': 3,
             'date_registration': "2023-10-24 12:42:31"
             }
-        product = Product(**data1)
+        product = Product(**data)
         product.save()
         self.stdout.write(f'{product}')

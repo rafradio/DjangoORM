@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from main.models import Order, Client, Product
+from main.models import Order, Client, Product, ProductSet
 
 class Command(BaseCommand):
     help = "Create user."
@@ -11,7 +11,8 @@ class Command(BaseCommand):
         client = Client.objects.get(id=idClient)
         product1 = Product.objects.get(id=idProduct1)
         product2 = Product.objects.get(id=idProduct2)
-        products = [product1, product2]
+        productSet = [ProductSet(product_id=product1, quantity=3), ProductSet(product_id=product2, quantity=4)]
+        for el in productSet: el.save()
         data = {
             'client_id': client,
             'total_check': 500.5,
@@ -20,7 +21,7 @@ class Command(BaseCommand):
             }
         order = Order(**data)
         order.save()
-        order.basket.add(product1)
-        order.basket.add(product2)
-        # order.save()
+        for el in productSet: order.basket.add(el)
+        # order.basket.add(productSet[0])
+        # order.basket.add(productSet[1])
         self.stdout.write(f'{order}')
