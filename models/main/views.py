@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from .models import Order
 import datetime
 
-def index(request):
+def index(request, pk):
     startDateTime = datetime.datetime.now()
-    timeDiff = datetime.timedelta(days=7)
+    timeDiff = datetime.timedelta(days=pk)
     ordersDateTime = startDateTime - timeDiff
     orders = Order.objects.filter(date_order__gte=ordersDateTime)
     notes = []
