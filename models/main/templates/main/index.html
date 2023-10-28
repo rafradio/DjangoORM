@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}Django App{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="title_main"><h2>Информация о заказах</h2></div>
+        <div class="list_of_notes">
+            {% if orders %}
+                {% for el in orders %}
+                <div>
+                    <a href="">{{ el.id }}{{ '. ' }}{{ el.total_check }}</a>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div>
+                <p>Заказов пока нет</p>
+            </div>
+            {% endif %}
+        </div>
+        <div class="footer_main">
+                <div class="new_note"><p>Создать заказ</p></div>
+        </div>
+    </div>
+    <script src="{% static 'main/js/formain.js' %}"></script>
+{% endblock %}

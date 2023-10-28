@@ -1,24 +1,27 @@
 from django.core.management.base import BaseCommand
 from main.models import Product
+import random
 
 class Command(BaseCommand):
     help = "Create user."
+    shopProducts = {"thirst": "bread", "second": "butter", "third": "shugar", "fourth": "salt", "fifth": "potato",
+                    "sixth": "tomato", "seventh": "chocolate", "eighth": "water",                
+                    "ninth": "cookie", "tenth": "toothpaste", "eleventh": "tea"
+                    }
 
     def handle(self, *args, **kwargs):
+        dataAll = list(map(self.crateData, self.shopProducts.items()))
+        for elm in dataAll:
+            product = Product(**elm)
+            product.save()
+            self.stdout.write(f'{product}')
+
+    def crateData(self, entry):
         data = {
-            'name': "bread",
-            'details': "first",
-            'price': 47.88,
-            'quantity': 3,
-            'date_registration': "2023-10-23 23:20:51"
+            'name': entry[1],
+            'details': entry[0],
+            'price': round(random.uniform(1.33, 99.66), 2),
+            'quantity': random.randint(5, 30),
+            'date_registration': "2023-10-28 11:44:51"
             }
-        data1 = {
-            'name': "butter",
-            'details': "second",
-            'price': 199.88,
-            'quantity': 3,
-            'date_registration': "2023-10-24 12:42:31"
-            }
-        product = Product(**data)
-        product.save()
-        self.stdout.write(f'{product}')
+        return data
