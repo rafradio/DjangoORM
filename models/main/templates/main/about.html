@@ -5,8 +5,10 @@
     <div class="container">
         <form id="newNote" class="newnote_content" method="POST" action="">
             {% csrf_token %}
-            <label for="title" class="form-field__label">Обо мне</label>
+            <label for="title" class="form-field__label">Колличество дней</label>
             <input id="title" type="text" class="form-field__input" name="title"><br>
+            <label for="client" class="form-field__label">ID клиента</label>
+            <input id="client" type="text" class="form-field__input" name="client"><br>
             <label for="bodyNote" class="form-field__label">Заметка</label>
             <textarea id="bodyNote" class="form-field__textarea" name="body"></textarea>
             <br>
