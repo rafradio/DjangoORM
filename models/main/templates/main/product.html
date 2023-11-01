@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}About me{% endblock %}
+{% block main %}
+    <div class="container">
+        <form id="newNote" class="newnote_content" method="POST" action="">
+            {% csrf_token %}
+            <label for="title" class="form-field__label">Название</label>
+            <input id="title" type="text" class="form-field__input" name="title"><br>
+            <label for="bodyNote" class="form-field__label">Детали</label>
+            <textarea id="bodyNote" class="form-field__productarea" name="body"></textarea>
+            <label for="price" class="form-field__label">Цена</label>
+            <input id="price" type="text" class="form-field__input" name="price"><br>
+            <label for="quantity" class="form-field__label">Колличество</label>
+            <input id="quantity" type="text" class="form-field__input" name="quantity"><br>
+            <label for="date" class="form-field__label">Дата</label>
+            <input id="date" type="text" class="form-field__input" name="date"><br>
+            <input type="submit" value="Добавить продукт" />
+        </form>
+        <!-- <button id="new_product" class="json_button" value="return">Новый продукт</button> -->
+        <button id="return" class="json_button" value="return">Вернуться в фильтр</button>
+    </div>
+    <!-- <script src="{% static 'main/js/returntomain.js' %}" type="module"></script> -->
+{% endblock %}
+
+

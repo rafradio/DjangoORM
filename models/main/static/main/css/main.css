@@ -32,6 +32,9 @@ body {
 .form-field__textarea {
     height: 200px;
 }
+.form-field__productarea {
+    height: 100px;
+}
 .title_main {
     display: flex;
     position: relative;
