@@ -3,7 +3,7 @@
 {% block title %}About me{% endblock %}
 {% block main %}
     <div class="container">
-        <form id="newNote" class="newnote_content" method="POST" action="">
+        <form id="newNote" class="newnote_content" method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="title" class="form-field__label">Название</label>
             <input id="title" type="text" class="form-field__input" name="title"><br>
@@ -15,6 +15,7 @@
             <input id="quantity" type="text" class="form-field__input" name="quantity"><br>
             <label for="date" class="form-field__label">Дата</label>
             <input id="date" type="text" class="form-field__input" name="date"><br>
+            <input id="files" type="file" class="file_upload" name="fileToUpload" /><br>
             <input type="submit" value="Добавить продукт" />
         </form>
         <!-- <button id="new_product" class="json_button" value="return">Новый продукт</button> -->

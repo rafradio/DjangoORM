@@ -123,3 +123,6 @@ body {
     color: #3498db;
     font-size: 10px;
 }
+.file_upload {
+    width: 50%;
+}

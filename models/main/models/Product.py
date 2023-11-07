@@ -7,6 +7,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity =  models.IntegerField()
     date_registration = models.DateTimeField(blank=False, default=datetime.now)
+    image = models.ImageField(upload_to='profile_pic', default='Nt_stick.png')
 
     def __str__(self):
         return f'Name: {self.name}, price: {self.price}'
