@@ -28,14 +28,14 @@ def newProduct(request):
             'price': request.POST['price'],
             'quantity': request.POST['quantity'],
             'date_registration': d,
-            'image': f.name
+            'image': f
             # 'date_registration': request.POST['date'],
         }
         filename = 'media/'+ f.name
         # path = default_storage.save(filename, ContentFile(f.read()))
-        with open(filename, "wb+") as destination:
-            for chunk in f.chunks():
-                destination.write(chunk)
+        # with open(filename, "wb+") as destination:
+        #     for chunk in f.chunks():
+        #         destination.write(chunk)
         product = Product(**data)
         product.save()
         print(f'Данные из формы {data["name"]} {data["price"]}')
